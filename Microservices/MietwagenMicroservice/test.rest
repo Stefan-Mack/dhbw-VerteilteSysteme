@@ -1,0 +1,48 @@
+###
+POST http://localhost:3003/autos/
+Content-Type: application/json
+
+{
+    "anbieter": "SIXT",
+    "standort_ausleihen": "Heilbronn",
+    "standort_rueckgabe": "Heilbronn",
+    "datum_ausleihen": "2024-06-18",
+    "datum_rueckgabe": "2024-06-21",
+    "fzg_modell": "Mercedes Benz A-Klasse",
+    "anz_sitze": 5,
+    "preis": 99,
+    "verfuegbarkeit": true
+    
+}
+
+###
+GET http://localhost:3003/autos/
+
+###
+GET http://localhost:3003/autos/details?rueckgabeort=Heilbronn
+
+
+###
+DELETE http://localhost:3003/autos/643fd66829c7a719407199c8
+
+###
+PUT http://localhost:3003/autos/647a0a7f871f3075d478e0c4
+Content-Type: application/json
+
+{
+    "anbieter": "SIXT",
+    "standort_ausleihen": "Heilbronn",
+    "standort_rueckgabe": "Heilbronn",
+    "datum_ausleihen": "2024-06-18",
+    "datum_rueckgabe": "2024-06-21",
+    "modell": "Mercedes Benz A-Klasse",
+    "anz_sitze": 5,
+    "preis": 99,
+    "verfuegbarkeit": true
+    
+}
+
+
+###
+GET http://localhost:3003/autos/rating/643fd649bcf4f9ac2471ed7e
+

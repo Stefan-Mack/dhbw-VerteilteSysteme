@@ -1,0 +1,40 @@
+###
+POST http://localhost:3002/hotels/
+Content-Type: application/json
+
+{
+    "hotelname": "Ciaohotel",
+    "ort": "Heilbronn",
+    "datum": "2023-06-08",
+    "zimmerpreis": 103,
+    "anzahl_freier_Zimmer": 7   
+}
+
+###
+GET http://localhost:3002/hotels/
+
+###
+GET http://localhost:3002/hotels/details?anreisetag=2023-06-08
+
+
+###
+DELETE http://localhost:3002/hotels/64804bb5d5377f61d575669e
+
+
+###
+PUT http://localhost:3002/hotels/64804c40d5377f61d57566a5
+Content-Type: application/json
+
+{
+    "hotelname": "Radisson Blu",
+    "ort": "Leipzig",
+    "datum": "2023-06-02",
+    "zimmerpreis": 101,
+    "anzahl_freier_Zimmer": 10
+    
+}
+
+
+###
+GET http://localhost:3001/hotels/rating/643fd649bcf4f9ac2471ed7e
+
