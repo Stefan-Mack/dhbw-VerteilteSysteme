@@ -1,0 +1,35 @@
+###
+POST http://localhost:3004/bewertung/
+Content-Type: application/json
+
+{
+    "fremdID": "H321",
+    "kategorie": "Hotel",
+    "anzahl_Sterne": "4",
+    "freitext": "Super Zimmer, toller Service, Aussicht nicht so toll"   
+}
+
+###
+GET http://localhost:3004/bewertung/
+
+###
+GET http://localhost:3004/bewertung/details?kategorie=Hotel
+
+
+###
+DELETE http://localhost:3004/bewertung/643fd66829c7a719407199c8
+
+###
+PUT http://localhost:3004/bewertung/647a13fb21eefb65ba6611a8
+Content-Type: application/json
+
+{
+    "fremdID": "H1234567",
+    "kategorie": "Hotel",
+    "anzahl_Sterne": "3",
+    "freitext": "Super Zimmer, toller Service, Aussicht nicht so toll"   
+}
+
+###
+GET http://localhost:3004/fluege/bewertung/643fd649bcf4f9ac2471ed7e
+
