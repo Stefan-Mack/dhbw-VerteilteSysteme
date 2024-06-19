@@ -1,0 +1,44 @@
+###
+POST http://localhost:3001/fluege/
+Content-Type: application/json
+
+{
+    "fluggesellschaft": "Lufthansa",
+    "flugnummer": "LH 1236",
+    "abflugort": "BER",
+    "ankunftsort": "NYC",
+    "abflugszeit": "2023-01-01T12:00:00.000Z",
+    "ankunftszeit": "2023-01-02T02:00:00.000Z",
+    "anzahl_freier_sitzplaetze": 100,
+    "preis_pro_sitzplatz": 700.00    
+}
+
+###
+GET http://localhost:3001/fluege/
+
+
+###
+GET http://localhost:3001/fluege/details?abflugszeit=2023-09-03
+
+###
+DELETE http://localhost:3001/fluege/643fd66829c7a719407199c8
+
+###
+PUT http://localhost:3001/fluege/64737e9ab92da5a7a6724960
+Content-Type: application/json
+
+{
+    "fluggesellschaft": "Lufthansa",
+    "flugnummer": "LH 1235",
+    "abflugort": "FRA",
+    "ankunftsort": "NYC",
+    "abflugszeit": "2023-01-01T12:00:00.000Z",
+    "ankunftszeit": "2023-01-02T02:00:00.000Z",
+    "anzahl_freier_sitzplaetze": 100,
+    "preis_pro_sitzplatz": 700.00    
+}
+
+
+###
+GET http://localhost:3001/fluege/rating/643fd649bcf4f9ac2471ed7e
+
