@@ -5,18 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bewertungs-Service</title>
+    <title>Hotel-Service</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="../src/styles/ratingStyles.css">
-    <script src="admin_bewertung.js"></script>
+    <link rel="stylesheet" href="../src/styles/hotelStyles.css">
+    <script src="./scripts/hotelAdminScript.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 
 <body class="d-flex flex-column h-100">
-
 
     <!-- Nav-bar -->
     <nav class="navbar bg-primary navbar-expand-md nav nav-pills" data-bs-theme="dark">
@@ -28,11 +27,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link text-white me-3 p-2" href="./hotel.html">Hotels</a>
+                    <a class="nav-link text-white me-3 p-2" style="background-color: blue;" aria-current="page"
+                        href="#">Hotels</a>
                     <a class="nav-link text-white me-3 p-2" href="./flight.html">Flüge</a>
                     <a class="nav-link text-white me-3 p-2" href="./car.html">Mietwagen</a>
-                    <a class="nav-link text-white me-3 p-2" style="background-color: blue;" aria-current="page"
-                        href="#">Bewertungen</a>
+                    <a class="nav-link text-white me-3 p-2" href="./rating.html">Bewertungen</a>
                 </div>
             </div>
         </div>
@@ -42,7 +41,7 @@
     <!-- header -->
     <div class="mx-auto text-left mb-3 pt-4 pb-3 w-100">
         <div class="mx-auto text-primary bg-light" style="width:80%;">
-            <h1 class="text-center">Bewertungen - Interface</h1>
+            <h1 class="text-center">Hotel - Interface</h1>
         </div>
     </div>
 
@@ -55,30 +54,31 @@
 
     <!-- labels -->
     <div class="input-group mx-auto" style="width:80%">
-        <input type="text" class="form-control" placeholder="FremdId" disabled>
-        <input type="text" class="form-control" placeholder="Kategorie des bewerteten Objekts" disabled>
-        <input type="text" class="form-control" placeholder="gesuchte Anzahl von Sternen" disabled>
-        <input type="text" class="form-control" placeholder="Freitextsuche in Bewertungen" disabled>
+        <input type="text" class="form-control" placeholder="Hotelname" disabled>
+        <input type="text" class="form-control" placeholder="Urlaubsort" disabled>
+        <input type="text" class="form-control" placeholder="Datum" disabled>
+        <input type="text" class="form-control" placeholder="Zimmeranzahl" disabled>
+        <input type="text" class="form-control" placeholder="Wunschpreis" disabled>
     </div>
 
     <!-- inputfields -->
     <div class="input-group mx-auto mb-2" style="width:80%">
-        <input type="text" class="form-control" id="foreignIdInput" value="" placeholder="text">
-        <input type="text" class="form-control" id="categoryInput" value="" placeholder="text">
-        <input type="text" class="form-control" id="starNumberInput" value="" placeholder="text">
-        <input type="text" class="form-control" id="textInput" value="" placeholder="text">
+        <input type="text" class="form-control" id="hotelNameInput" value="" placeholder="text">
+        <input type="text" class="form-control" id="cityInput" value="" placeholder="text">
+        <input type="text" class="form-control" id="dayInput" value="" placeholder="YYYY-MM-DD">
+        <input type="text" class="form-control" id="roomCountInput" value="" placeholder="text">
+        <input type="text" class="form-control" id="priceInput" value="" placeholder="xx.xx €">
     </div>
-
 
     <!-- buttons -->
     <div class="text-center mt-3 mb-5">
-        <a tabindex="0" class="btn btn-primary px-5 py-3" role="button" onclick="GetRatingContent()">Anzeigen</a>
-        <a tabindex="0" class="btn btn-primary px-5 py-3" role="button" onclick="CreateRatingContent()">Erstellen</a>
+        <a tabindex="0" class="btn btn-primary px-5 py-3" role="button" onclick="GetHotelContent()">Anzeigen</a>
+        <a tabindex="0" class="btn btn-primary px-5 py-3" role="button" onclick="CreateHotelContent()">Erstellen</a>
     </div>
 
 
     <!-- Modalfenster -->
-    <div class="modal" id="myModal_bew">
+    <div class="modal" id="myModal_hotel">
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Modalfenster Kopfzeile -->
@@ -87,15 +87,16 @@
                 </div>
                 <!-- Modalfenster Körper -->
                 <div class="modal-body">
-                    <input type="text" class="form-control" id="mod_foreignIdInput" value="" placeholder="Fremd-ID">
-                    <input type="text" class="form-control" id="mod_categoryInput" value="" placeholder="Kategorie">
-                    <input type="text" class="form-control" id="mod_starNumberInput" value=""
-                        placeholder="Stern-Anzahl">
-                    <input type="text" class="form-control" id="mod_textInput" value="" placeholder="Freitext">
+                    <input type="text" class="form-control" id="mod_hotelNameInput" value="" placeholder="Name">
+                    <input type="text" class="form-control" id="mod_cityInput" value="" placeholder="Ort">
+                    <input type="text" class="form-control" id="mod_dayInput" value="" placeholder="Datum">
+                    <input type="text" class="form-control" id="mod_roomCountInput" value=""
+                        placeholder="Anzahl freier Zimmer">
+                    <input type="text" class="form-control" id="mod_priceInput" value="" placeholder="Zimmer-Preis">
                 </div>
                 <!-- Modalfenster Fußzeile -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="modal-ok-button4">OK</button>
+                    <button type="button" class="btn btn-primary" id="modal-ok-button">OK</button>
                 </div>
             </div>
         </div>
@@ -106,19 +107,19 @@
     <table class="table table-striped table-bordered mx-auto" style="width: 80%; background-color: white;">
         <tr class="bg-light">
             <th>Id</th>
-            <th>FremdId</th>
-            <th>Kategorie</th>
-            <th>Anzahl der Sterne</th>
-            <th>Freitext der Bewertung</th>
+            <th>Name</th>
+            <th>Ort</th>
+            <th>Datum</th>
+            <th>Zimmeranzahl</th>
+            <th>Preis</th>
             <th></th>
         </tr>
-        <tbody id="ratingBackendContent"></tbody>
+        <tbody id="hotelBackendContent"></tbody>
     </table>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
 
 </html>
