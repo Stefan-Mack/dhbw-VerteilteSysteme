@@ -9,7 +9,6 @@ function GetCarContent() {
   var rueckgabedatum = document.getElementById("endTimeInput").value;
   var preis = document.getElementById("priceInput").value;
 
-
   // create API-URL with parameters
   const baseUrl = "http://localhost:3003/autos/details?";
   var params = "";
@@ -21,7 +20,6 @@ function GetCarContent() {
   if (ausleihdatum) params += "&ausleihdatum=" + encodeURIComponent(ausleihdatum);
   if (rueckgabedatum) params += "&rueckgabedatum=" + encodeURIComponent(rueckgabedatum);
   if (preis) params += "&preis=" + encodeURIComponent(preis);
-
 
   // API-Call
   fetch(baseUrl + params)
