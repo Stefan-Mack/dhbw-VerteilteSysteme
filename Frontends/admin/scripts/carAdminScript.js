@@ -30,10 +30,10 @@ function GetCarContent() {
     })
     .then(function (data) {
       // get the table and clear it
-      var wagenTable = document.getElementById("carBackendContent");
-      wagenTable.innerHTML = "";
+      var carTable = document.getElementById("carBackendContent");
+      carTable.innerHTML = "";
 
-      // Daten in die Tabelle einfügen
+      // loop through the data and add it to the table
       data.forEach(function (wagen) {
         var row = document.createElement("tr");
 
@@ -99,7 +99,7 @@ function GetCarContent() {
         }
         row.appendChild(buttonCell);
 
-        wagenTable.appendChild(row);
+        carTable.appendChild(row);
       });
     })
     .catch(function (error) {
