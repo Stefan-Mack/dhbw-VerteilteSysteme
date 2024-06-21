@@ -1,4 +1,4 @@
-function FLUG_FUNKTION() {
+function GetFlightContent() {
   // Eingabedaten erfassen
   var fluggesellschaft = document.getElementById("airlineInput").value;
   var abflugort = document.getElementById("departurePlacInput").value;

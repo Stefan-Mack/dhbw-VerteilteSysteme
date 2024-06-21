@@ -3,11 +3,11 @@ POST http://localhost:3002/hotels/
 Content-Type: application/json
 
 {
-    "hotelname": "Ciaohotel",
-    "ort": "Heilbronn",
+    "name_hotel": "Ciaohotel",
+    "standort_hotel": "Heilbronn",
     "datum": "2023-06-08",
-    "zimmerpreis": 103,
-    "anzahl_freier_Zimmer": 7   
+    "preis_zimmer": 103,
+    "anz_zimmer_frei": 7   
 }
 
 ###

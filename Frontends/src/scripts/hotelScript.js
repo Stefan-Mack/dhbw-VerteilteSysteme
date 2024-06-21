@@ -1,21 +1,21 @@
 function GetHotelContent() {
   // get input data
-  var hotelname = document.getElementById("Spalte1_1").value;
-  var ort = document.getElementById("Spalte1_2").value;
-  var anreise = document.getElementById("Spalte1_3").value;
-  var abreise = document.getElementById("Spalte1_3_2").value;
-  var anzahl_freier_Zimmer = document.getElementById("Spalte1_4").value;
-  var zimmerpreis = document.getElementById("Spalte1_5").value;
+  var hotelname = document.getElementById("hotelNameInput").value;
+  var ort = document.getElementById("cityInput").value;
+  var anreise = document.getElementById("arrivalDayInput").value;
+  var abreise = document.getElementById("departureDayInput").value;
+  var anzahl_freier_Zimmer = document.getElementById("roomCountInput").value;
+  var zimmerpreis = document.getElementById("priceInput").value;
 
   // create API-URL with parameters
   const baseUrl = "http://localhost:3002/hotels/details?";
   var params = "";
-  if (hotelname) params += "hotelname=" + encodeURIComponent(hotelname);
-  if (ort) params += "&ort=" + encodeURIComponent(ort);
+  if (hotelname) params += "name_hotel=" + encodeURIComponent(hotelname);
+  if (ort) params += "&standort_hotel=" + encodeURIComponent(ort);
   if (anreise) params += "&anreisetag=" + encodeURIComponent(anreise);
   if (abreise) params += "&abreisetag=" + encodeURIComponent(abreise);
-  if (anzahl_freier_Zimmer) params += "&anzahl_freier_Zimmer=" + encodeURIComponent(anzahl_freier_Zimmer);
-  if (zimmerpreis) params += "&zimmerpreis=" + encodeURIComponent(zimmerpreis);
+  if (anzahl_freier_Zimmer) params += "&anz_zimmer_frei=" + encodeURIComponent(anzahl_freier_Zimmer);
+  if (zimmerpreis) params += "&preis_zimmer=" + encodeURIComponent(zimmerpreis);
 
   // API-Call
   fetch(baseUrl + params)
