@@ -14,14 +14,14 @@ function GetCarContent() {
   const baseUrl = "http://localhost:3003/autos/details?";
   var params = "";
   if (provider) params += "anbieter=" + encodeURIComponent(provider);
-  if (rentPlace) params += "&ausleihort=" + encodeURIComponent(rentPlace);
-  if (returnPlace) params += "&rueckgabeort=" + encodeURIComponent(returnPlace);
-  if (carModell) params += "&modell=" + encodeURIComponent(carModell);
-  if (seatNumber) params += "&anzahl_sitze=" + encodeURIComponent(seatNumber);
-  if (ausleihdatum) params += "&ausleihdatum=" + encodeURIComponent(ausleihdatum);
-  if (rueckgabedatum) params += "&rueckgabedatum=" + encodeURIComponent(rueckgabedatum);
+  if (rentPlace) params += "&standort_ausleihen=" + encodeURIComponent(rentPlace);
+  if (returnPlace) params += "&standort_rueckgabe=" + encodeURIComponent(returnPlace);
+  if (carModell) params += "&fzg_modell=" + encodeURIComponent(carModell);
+  if (seatNumber) params += "&anz_sitze=" + encodeURIComponent(seatNumber);
+  if (ausleihdatum) params += "&datum_ausleihen=" + encodeURIComponent(ausleihdatum);
+  if (rueckgabedatum) params += "&datum_rueckgabe=" + encodeURIComponent(rueckgabedatum);
   if (preis) params += "&preis=" + encodeURIComponent(preis);
-  if (Verfuegbarkeit) apiUrl += "&verfuegbarkeit=" + encodeURIComponent(Verfuegbarkeit);
+  if (Verfuegbarkeit) params += "&verfuegbarkeit=" + encodeURIComponent(Verfuegbarkeit);
 
   // API-Call
   fetch(baseUrl + params)
@@ -46,27 +46,27 @@ function GetCarContent() {
         row.appendChild(providerEntry);
 
         var rentPlaceEntry = document.createElement("td");
-        rentPlaceEntry.textContent = wagen.ausleihort;
+        rentPlaceEntry.textContent = wagen.standort_ausleihen;
         row.appendChild(rentPlaceEntry);
 
         var rueckortEntry = document.createElement("td");
-        rueckortEntry.textContent = wagen.rueckgabeort;
+        rueckortEntry.textContent = wagen.standort_rueckgabe;
         row.appendChild(rueckortEntry);
 
         var carModellCell = document.createElement("td");
-        carModellCell.textContent = wagen.modell;
+        carModellCell.textContent = wagen.fzg_modell;
         row.appendChild(carModellCell);
 
         var seatNumberEntry = document.createElement("td");
-        seatNumberEntry.textContent = wagen.anzahl_sitze;
+        seatNumberEntry.textContent = wagen.anz_sitze;
         row.appendChild(seatNumberEntry);
 
         var rentDateEntry = document.createElement("td");
-        rentDateEntry.textContent = wagen.ausleihdatum;
+        rentDateEntry.textContent = wagen.datum_ausleihen;
         row.appendChild(rentDateEntry);
 
         var returnDateEntry = document.createElement("td");
-        returnDateEntry.textContent = wagen.rueckgabedatum;
+        returnDateEntry.textContent = wagen.datum_rueckgabe;
         row.appendChild(returnDateEntry);
 
         var availableEntry = document.createElement("td");
@@ -127,12 +127,12 @@ function CreateCarContent() {
     },
     body: JSON.stringify({
       anbieter: provider,
-      ausleihort: rentPlace,
-      ausleihdatum: ausleihdatum,
-      rueckgabeort: returnPlace,
-      rueckgabedatum: rueckgabedatum,
-      modell: carModell,
-      anzahl_sitze: seatNumber,
+      standort_ausleihen: rentPlace,
+      datum_ausleihen: ausleihdatum,
+      standort_rueckgabe: returnPlace,
+      datum_rueckgabe: rueckgabedatum,
+      fzg_modell: carModell,
+      anz_sitze: seatNumber,
       preis: preis,
       verfuegbarkeit: Verfuegbarkeit,
     })

@@ -32,15 +32,15 @@ function GetHotelContent() {
         var row = document.createElement("tr");
 
         var nameEntry = document.createElement("td");
-        nameEntry.textContent = hotel.hotelname;
+        nameEntry.textContent = hotel.name_hotel;
         row.appendChild(nameEntry);
 
         var cityEntry = document.createElement("td");
-        cityEntry.textContent = hotel.ort;
+        cityEntry.textContent = hotel.standort_hotel;
         row.appendChild(cityEntry);
 
         var priceEntry = document.createElement("td");
-        priceEntry.textContent = hotel.zimmerpreis;
+        priceEntry.textContent = hotel.preis_zimmer;
         row.appendChild(priceEntry);
 
         hotelTable.appendChild(row);

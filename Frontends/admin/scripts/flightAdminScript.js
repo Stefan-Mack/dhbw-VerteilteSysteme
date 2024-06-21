@@ -2,7 +2,7 @@ function GetFlightContent() {
     // get input data
     var airline = document.getElementById("airlineInput").value;
     var fligthNumber = document.getElementById("flightNrInput").value;
-    var departurePlace = document.getElementById("departurePlacInput").value;
+    var departurePlace = document.getElementById("departurePlaceInput").value;
     var arrivalPlace = document.getElementById("arrivalPlaceInput").value;
     var departureTime = document.getElementById("departureTimeInput").value;
     var arrivalTime = document.getElementById("arrivalTimeInput").value;
@@ -22,13 +22,13 @@ function GetFlightContent() {
     if (price) params += "&preis_pro_sitzplatz=" + encodeURIComponent(price);
     
     // API-Call
-    fetch(params)
+    fetch(baseUrl + params)
         .then(function (response) {
         return response.json();
         })
     .then(function (data) {
       // get the table and clear it
-      var flugTable = document.getElementById("Flug_Table");
+      var flugTable = document.getElementById("fligthBackendContent");
       flugTable.innerHTML = "";
       
       // loop through the data and add it to the table
@@ -104,7 +104,7 @@ function CreateFlightContent() {
     // get input data
     var airline = document.getElementById("airlineInput").value;
     var flightNumber = document.getElementById("flightNrInput").value;
-    var departurePlace = document.getElementById("departurePlacInput").value;
+    var departurePlace = document.getElementById("departurePlaceInput").value;
     var arrivalPlace = document.getElementById("arrivalPlaceInput").value;
     var departureTime = document.getElementById("departureTimeInput").value;
     var arrivalTime = document.getElementById("arrivalTimeInput").value;

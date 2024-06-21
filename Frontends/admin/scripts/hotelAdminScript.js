@@ -9,11 +9,11 @@ function GetHotelContent() {
   // create API-URL with parameters
   const baseUrl = "http://localhost:3002/hotels/details?";
   var params = "";
-  if (hotelname) params += "hotelname=" + encodeURIComponent(hotelname);
-  if (ort) params += "&ort=" + encodeURIComponent(ort);
+  if (hotelname) params += "name_hotel=" + encodeURIComponent(hotelname);
+  if (ort) params += "&standort_hotel=" + encodeURIComponent(ort);
   if (datum) params += "&datum=" + encodeURIComponent(datum);
-  if (anzahl_freier_Zimmer) params += "&anzahl_freier_Zimmer=" + encodeURIComponent(anzahl_freier_Zimmer);
-  if (zimmerpreis) params += "&zimmerpreis=" + encodeURIComponent(zimmerpreis);
+  if (anzahl_freier_Zimmer) params += "&anz_zimmer_frei=" + encodeURIComponent(anzahl_freier_Zimmer);
+  if (zimmerpreis) params += "&preis_zimmer=" + encodeURIComponent(zimmerpreis);
 
   // API-Call
   fetch(baseUrl + params)
@@ -34,11 +34,11 @@ function GetHotelContent() {
         row.appendChild(idEntry);
         
         var nameEntry = document.createElement("td");
-        nameEntry.textContent = hotel.hotelname;
+        nameEntry.textContent = hotel.name_hotel;
         row.appendChild(nameEntry);
 
         var cityEntry = document.createElement("td");
-        cityEntry.textContent = hotel.ort;
+        cityEntry.textContent = hotel.standort_hotel;
         row.appendChild(cityEntry);
 
         var dateEntry = document.createElement("td");
@@ -46,11 +46,11 @@ function GetHotelContent() {
         row.appendChild(dateEntry);
 
         var roomCountEntry = document.createElement("td");
-        roomCountEntry.textContent = hotel.anzahl_freier_Zimmer;
+        roomCountEntry.textContent = hotel.anz_zimmer_frei;
         row.appendChild(roomCountEntry);
 
         var priceEntry = document.createElement("td");
-        priceEntry.textContent = hotel.zimmerpreis;
+        priceEntry.textContent = hotel.preis_zimmer;
         row.appendChild(priceEntry);
 
         // update function button
@@ -97,11 +97,11 @@ function CreateHotelContent() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            hotelname: hotelname,
-            ort: city,
+            name_hotel: hotelname,
+            standort_hotel: city,
             datum: date,
-            zimmerpreis: roomPrice,
-            anzahl_freier_Zimmer: roomCount
+            preis_zimmer: roomPrice,
+            anz_zimmer_frei: roomCount
         })
     })
         .then(res => console.log(res))  
@@ -116,11 +116,11 @@ function closeModal_hotel(id) {
     .then(res => res.json())
     .then(data => {
         // get input data
-        var hotelname = document.getElementById("mod_hotelNameInput").value || data[0].hotelname;
-        var city = document.getElementById("mod_cityInput").value || data[0].ort;
+        var hotelname = document.getElementById("mod_hotelNameInput").value || data[0].name_hotel;
+        var city = document.getElementById("mod_cityInput").value || data[0].standort_hotel;
         var date = document.getElementById("mod_dayInput").value || data[0].datum;
-        var roomCount = document.getElementById("mod_roomCountInput").value || data[0].anzahl_freier_Zimmer;
-        var roomPrice = document.getElementById("mod_priceInput").value || data[0].zimmerpreis;
+        var roomCount = document.getElementById("mod_roomCountInput").value || data[0].anz_zimmer_frei;
+        var roomPrice = document.getElementById("mod_priceInput").value || data[0].preis_zimmer;
 
         // put request
         fetch("http://localhost:3002/hotels/" + id, {
@@ -130,11 +130,11 @@ function closeModal_hotel(id) {
         },
         body: JSON.stringify({
             // mapping
-            hotelname: hotelname,
-            ort: city,
+            name_hotel: hotelname,
+            standort_hotel: city,
             datum: date,
-            zimmerpreis: roomPrice,
-            anzahl_freier_Zimmer: roomCount
+            preis_zimmer: roomPrice,
+            anz_zimmer_frei: roomCount
         })
     })
     .then(res => console.log(res))
