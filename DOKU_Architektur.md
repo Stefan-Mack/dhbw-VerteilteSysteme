@@ -1,6 +1,6 @@
 # DOKU_Architektur
 
-Unser System ist in eine modulare Architektur gegliedert, die aus mehreren Microservices und Frontends besteht, um eine skalierbare und benutzerfreundliche Plattform zu gewährleisten.
+Unser System ist in eine modulare Architektur gegliedert, die aus mehreren Microservices und Frontends besteht, um eine skalierbare und benutzerfreundliche Plattform zu gewährleisten. Um das System zu nutzen, muss das standardmäßige `node_modules`-Verzeichnis zu den jeweiligen Microservices hinzugefügt werden.
 
 ## Microservices
 
